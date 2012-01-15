@@ -19,7 +19,7 @@ CURL=${CURL:-curl}
 FETCH=${FETCH:-fetch}
 TAR=${TAR:-tar}
 GUNZIP=${GUNZIP:-gunzip}
-SCOPE_OF_INSTALLATION="--user"
+SCOPE_OF_INSTALLATION="--global"
 
 
 for arg in $*
@@ -47,13 +47,14 @@ done
 # Versions of the packages to install.
 # The version regex says what existing installed versions are ok.
 PARSEC_VER="3.1.1";    PARSEC_VER_REGEXP="[23]\."  # == 2.* || == 3.*
-NETWORK_VER="2.3.0.2"; NETWORK_VER_REGEXP="2\."    # == 2.*
-CABAL_VER="1.10.1.0";  CABAL_VER_REGEXP="1\.10\.[^0]"  # == 1.10.* && >= 1.10.1
+NETWORK_VER="2.3.0.8"; NETWORK_VER_REGEXP="2\."    # == 2.*
+CABAL_VER="1.14.0";    CABAL_VER_REGEXP="1\.14\."  # == 1.12.*
 TRANS_VER="0.2.2.0";   TRANS_VER_REGEXP="0\.2\."   # == 0.2.*
 MTL_VER="2.0.1.0";     MTL_VER_REGEXP="[12]\."     # == 1.* || == 2.*
-HTTP_VER="4000.1.1";   HTTP_VER_REGEXP="4000\.[01]\." # == 4000.0.* || 4000.1.*
+HTTP_VER="4000.2.2";   HTTP_VER_REGEXP="4000\.[012]\." # == 4000.0.* || 4000.1.*
 ZLIB_VER="0.5.3.1";    ZLIB_VER_REGEXP="0\.[45]\." # == 0.4.* || ==0.5.*
-TIME_VER="1.2.0.4"     TIME_VER_REGEXP="1\.[12]\." # == 0.1.* || ==0.2.*
+TIME_VER="1.4";    TIME_VER_REGEXP="1\.[124]" # == 0.1.* || ==0.2.*
+RANDOM_VER="1.0.1.1";  RANDOM_VER_REGEXP="1\."     # == 1.*
 
 HACKAGE_URL="http://hackage.haskell.org/packages/archive"
 
@@ -191,6 +192,7 @@ info_pkg "network"      ${NETWORK_VER} ${NETWORK_VER_REGEXP}
 info_pkg "time"         ${TIME_VER}    ${TIME_VER_REGEXP}
 info_pkg "HTTP"         ${HTTP_VER}    ${HTTP_VER_REGEXP}
 info_pkg "zlib"         ${ZLIB_VER}    ${ZLIB_VER_REGEXP}
+info_pkg "random"       ${RANDOM_VER}  ${RANDOM_VER_REGEXP}
 
 do_pkg   "Cabal"        ${CABAL_VER}   ${CABAL_VER_REGEXP}
 do_pkg   "transformers" ${TRANS_VER}   ${TRANS_VER_REGEXP}
@@ -200,6 +202,7 @@ do_pkg   "network"      ${NETWORK_VER} ${NETWORK_VER_REGEXP}
 do_pkg   "time"         ${TIME_VER}    ${TIME_VER_REGEXP}
 do_pkg   "HTTP"         ${HTTP_VER}    ${HTTP_VER_REGEXP}
 do_pkg   "zlib"         ${ZLIB_VER}    ${ZLIB_VER_REGEXP}
+do_pkg   "random"       ${RANDOM_VER}  ${RANDOM_VER_REGEXP}
 
 install_pkg "cabal-install"
 
